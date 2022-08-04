@@ -51,6 +51,7 @@ app.post('/signup', async (req, res) => {
         email: req.body.email,
         phone: req.body.phone,
         contactPreference: req.body.contactpreference,
+        referrer: req.body.referrer,
         confNum: confNum,
         createdAt: new Date()
     }
@@ -58,6 +59,19 @@ app.post('/signup', async (req, res) => {
     // Push to Segment Personas
     await pushContact(req.body.email, traits);
 
+    await pushEvent(req.body.email, 'Sign Up', {
+        createdAt: new Date(),
+        source: 'Transform Web App',
+    });
+
+    // Push Referral Event
+    if (req.body.referrer != '') {
+        await pushEvent(req.body.referrer, 'Referred a Friend', {
+            createdAt: new Date(),
+            referral: req.body.email,
+            source: 'Transform Web App'
+        });
+    }
 
     await sgMail.send(msg);
     res.render('message', { message: 'Thank you for signing up for our newsletter! Please complete the process by confirming the subscription in your email inbox.' });
@@ -72,6 +86,14 @@ async function pushContact(userId, traits) {
     analytics.identify({
         userId: userId,
         traits: traits
+    });
+}
+
+async function pushEvent(userId, event, properties) {
+    analytics.track({
+        userId: userId,
+        event: event,
+        properties: properties
     });
 }
 
