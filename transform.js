@@ -57,6 +57,8 @@ app.post('/signup', async (req, res) => {
 
     // Push to Segment Personas
     await pushContact(req.body.email, traits);
+
+
     await sgMail.send(msg);
     res.render('message', { message: 'Thank you for signing up for our newsletter! Please complete the process by confirming the subscription in your email inbox.' });
 });
