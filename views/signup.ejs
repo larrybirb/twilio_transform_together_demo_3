@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="http://fonts.cdnfonts.com/css/whitney-2" rel="stylesheet">
+
+    <link rel="shortcut icon" href="https://www.twilio.com/docs/static/img/favicons/favicon.256e882a0.ico" />
+    <link rel="apple-touch-icon" href="https://www.twilio.com/docs/static/img/favicons/favicon_57.256e882a0.png" />
+    <link rel="apple-touch-icon" sizes="72x72"
+        href="https://www.twilio.com/docs/static/img/favicons/favicon_72.256e882a0.png" />
+    <link rel="apple-touch-icon" sizes="114x114"
+        href="https://www.twilio.com/docs/static/img/favicons/favicon_114.256e882a0.png" />
 </head>
 
 <body style="box-sizing: border-box; font-family: 'Whitney'; background: #F22F46;">
@@ -42,11 +49,31 @@
                         <label for="email">Email address</label>
                         <input type="email" class="form-control" id="email" name="email" placeholder="Enter email"
                             required>
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="+6591234567"
+                            required>
+                        <small id="phoneHelp" class="form-text text-muted">We'll never share your contact details with
+                            anyone
                             else.</small>
                     </div>
+                    <label for="contactPreference">Contact Preference</label><br />
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="emailPreferred" name="contactpreference"
+                            value="Email" checked required>
+                        <label for="emailPreferred" class="form-check-label">Email</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" id="phonePreferred" name="contactpreference"
+                            value="Phone" required>
+                        <label for="phonePreferred" class="form-check-label">Phone</label>
+                    </div>
+
+                    <br /><br />
                     <button type="submit" style="background:#0263e0 !important;"
                         class="btn btn-primary">Subscribe</button>
+
                 </form>
             </div>
         </div>
